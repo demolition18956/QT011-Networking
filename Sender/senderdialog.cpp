@@ -30,13 +30,13 @@ void SenderDialog::writeMessage()
 {
 	QByteArray datagram;
 	
-	QDataStream out(&datagram, QIODevice::WriteOnly);
-	out.setVersion(QDataStream::Qt_4_4); // only necessary in QDataStream
+	QTextStream out(&datagram, QIODevice::WriteOnly);
+	//out.setVersion(QDataStream::Qt_4_4); // only necessary in QDataStream
 	
 	QString msg = lineEdit->text();
 	lineEdit->setText("");
 	
-	out << msg;
+	out << msg << endl;
 	
 	sendSocket->writeDatagram(datagram, QHostAddress::LocalHost, 5678);
 }

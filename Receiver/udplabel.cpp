@@ -28,9 +28,9 @@ void UDPLabel::processPendingDatagrams()
 	}
 	
 	QString msg;
-	QDataStream in(&mydatagram, QIODevice::ReadOnly);
+	QTextStream in(&mydatagram, QIODevice::ReadOnly);
 	
-	in.setVersion(QDataStream::Qt_4_4); // Only necessary with QDataStream
+	//in.setVersion(QDataStream::Qt_4_4); // Only necessary with QDataStream
 	
 	in >> msg;
 	this->setText(msg);
